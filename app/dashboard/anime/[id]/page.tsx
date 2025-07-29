@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
-import { animeData } from '../../../../data/anime';
+import { animeData } from '@/app/data/anime';
 import Link from 'next/link';
 import { Play } from 'lucide-react';
+import Image from 'next/image';
 
 export default function AnimeSeriesPage({ params }: { params: { id: string } }) {
   const anime = animeData.find(a => a.id === params.id);
@@ -27,10 +28,13 @@ export default function AnimeSeriesPage({ params }: { params: { id: string } }) 
       <div className="max-w-4xl mx-auto mb-12">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/3">
-            <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-800">
-              <div className="w-full h-full flex items-center justify-center">
-                <Play className="w-16 h-16 text-white/50" />
-              </div>
+            <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-800 relative">
+              <Image
+                src={anime.thumbnail}
+                alt={anime.title}
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
           <div className="md:w-2/3">

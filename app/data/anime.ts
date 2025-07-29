@@ -2,16 +2,66 @@
 const embedUrl = (id: string) => `https://drive.google.com/file/d/${id}/preview`;
 
 // Vinland Saga episodes data
-const vinlandEpisodes = [
-  { id: '1', title: 'Somewhere Not Here', fileId: '18agzFRBLLENyFPte9MSM6mwFfVZ1TcXX', duration: '24m' },
-  { id: '2', title: 'Sword of the War God', fileId: '1C9sp08PAyzUt9E9WlgxMlhfzNH2Eqy0j', duration: '24m' },
-  { id: '3', title: 'Troll', fileId: '1n5ITdfWTcBfdmyigVTm2uO7PGxeAxD7V', duration: '24m' },
-  { id: '4', title: 'The True Warrior', fileId: '1Q0jB625SDhjVpJxLG3KXNfJUpWfzv-BM', duration: '24m' },
-  { id: '5', title: 'The Troll\'s Son Returns', fileId: '1zhZXmtvefTmEUsvz7Vj3I-z2yiQfW6qU', duration: '24m' },
-  // Add more episodes as needed
-].map(ep => ({
-  ...ep,
-  embedUrl: embedUrl(ep.fileId),
+const vinlandEpisodeTitles = [
+  'Somewhere Not Here',
+  'Sword',
+  'Troll',
+  'A True Warrior',
+  'The Troll\'s Son',
+  'The Journey Begins',
+  'Normanni',
+  'Beyond the Edge of the Sea',
+  'The Battle of London Bridge',
+  'Ragnarok',
+  'A Gamble',
+  'The Land on the Far Bank',
+  'Child of a Hero',
+  'The Light of Dawn',
+  'After Yule',
+  'History of Beasts',
+  'Servant',
+  'Out of the Cradle',
+  'United Front',
+  'Crown',
+  'Reunion',
+  'Lone Wolf',
+  'Miscalculation',
+  'End of the Prologue'
+];
+
+const vinlandFileIds = [
+  '18agzFRBLLENyFPte9MSM6mwFfVZ1TcXX',
+  '1C9sp08PAyzUt9E9WlgxMlhfzNH2Eqy0j',
+  '1n5ITdfWTcBfdmyigVTm2uO7PGxeAxD7V',
+  '1Q0jB625SDhjVpJxLG3KXNfJUpWfzv-BM',
+  '1zhZXmtvefTmEUsvz7Vj3I-z2yiQfW6qU',
+  '1MBNuVQDXn_4bHvDB40s0y9WPK1BDr349',
+  '15Y3DwhQLoYciP3swa6v-Lv82Htj7A7vF',
+  '15-Lm3wInDYq6REI31J-BgaRo-Y1KIuQN',
+  '1l5yFaPlQ16FHxLrgxl4zHmBCIK0ZXnz0',
+  '1LxNJXZ3VdTRLWMYoa-E0wNI7qL9z1ziU',
+  '1V9yaFzba1zzFXkne6q5nHiTXtKB6XfGJ',
+  '1U4X9ZRVoWbkzuENb7NbUdtROOSjs7zVM',
+  '1ISYJo42lG5cmrWSra_uq2vTKOsrbzzHn',
+  '1ncGiDeu2pFAfbou_OoG-bOtsBbzILvHN',
+  '1VqsFOfzujyLVoX20cX3SACUq7B3yFewR',
+  '1t2Dzepml6uTQ5f8Bx4ilKlriuIePjNmO',
+  '19d1f_2MZewyNbVR7tHTUgXPnUsPb2bqM',
+  '1rF9w6hrY9uwLrzMK1UhI8Zh9u-_VzMR6',
+  '1j0ZFv14hJR6Y-83uSvXDq_1cuF6cTFRD',
+  '1zJH0zRfAaLe2i0g-a3VS8D2TavOBlokG',
+  '1bh6exGRFxQnYpwAM57YextzFk1UJqkxf',
+  '1TQkhXuC-DbITROmwpCfV9YH8JXaOVc8s',
+  '1gL9Z3OV1QUa6LASmVRX8sh2LidmStjIu',
+  '1ds_Q_WFz_ymMlcqZUwks0fulf0nUmQV8'
+];
+
+const vinlandEpisodes = vinlandEpisodeTitles.map((title, index) => ({
+  id: `${index + 1}`,
+  title: title,
+  fileId: vinlandFileIds[index],
+  duration: '24m',
+  embedUrl: embedUrl(vinlandFileIds[index]),
   progress: 0
 }));
 
@@ -32,25 +82,10 @@ export interface AnimeSeries {
   genres: string[];
   type: 'movie' | 'series';
   episodes: Episode[];
+  thumbnail: string;
 }
 
 export const animeData: AnimeSeries[] = [
-  {
-    id: '5-centimeters-per-second',
-    title: '5 Centimeters Per Second',
-    description: 'A story about the delicate nature of love and life, told in three interconnected segments.',
-    year: '2007',
-    genres: ['Drama', 'Romance', 'Slice of Life'],
-    type: 'movie',
-    episodes: [{
-      id: '1',
-      title: '5 Centimeters Per Second',
-      fileId: '1vaJq7NFZyww74Tq-lECZRLjC3YU4owva',
-      duration: '1h 3m',
-      embedUrl: embedUrl('1vaJq7NFZyww74Tq-lECZRLjC3YU4owva'),
-      progress: 0
-    }]
-  },
   {
     id: 'a-silent-voice',
     title: 'A Silent Voice',
@@ -58,6 +93,7 @@ export const animeData: AnimeSeries[] = [
     year: '2016',
     genres: ['Drama', 'Romance', 'School'],
     type: 'movie',
+    thumbnail: '/thumbnails/a_silent_voice.jpg',
     episodes: [{
       id: '1',
       title: 'A Silent Voice',
@@ -73,6 +109,7 @@ export const animeData: AnimeSeries[] = [
     description: 'A 15-year-old boy and 27-year-old woman form an unlikely friendship in a beautiful garden.',
     year: '2013',
     genres: ['Drama', 'Romance', 'Slice of Life'],
+    thumbnail: '/thumbnails/the_garden_of_words.jpg',
     type: 'movie',
     episodes: [{
       id: '1',
@@ -84,7 +121,25 @@ export const animeData: AnimeSeries[] = [
     }]
   },
   {
+    id: 'weathering-with-you',
+    thumbnail: '/thumbnails/weathering-with-you.jpg',
+    title: 'Weathering with You',
+    description: 'A high-school boy who has run away to Tokyo befriends a girl who appears to be able to manipulate the weather.',
+    year: '2019',
+    genres: ['Animation', 'Drama', 'Fantasy'],
+    type: 'movie',
+    episodes: [{
+      id: '1',
+      title: 'Weathering with You',
+      fileId: '1-placeholder-file-id-for-weathering-with-you',
+      duration: '1h 52m',
+      embedUrl: embedUrl('1vaJq7NFZyww74Tq-lECZRLjC3YU4owva'),
+      progress: 0
+    }]
+  },
+  {
     id: 'your-name',
+    thumbnail: '/thumbnails/your-name.jpg',
     title: 'Your Name',
     description: 'Two teenagers discover they are swapping bodies and form a deep connection.',
     year: '2016',
@@ -106,6 +161,7 @@ export const animeData: AnimeSeries[] = [
     year: '2019',
     genres: ['Action', 'Adventure', 'Drama', 'Historical'],
     type: 'series',
-    episodes: vinlandEpisodes
+    episodes: vinlandEpisodes,
+    thumbnail: '/thumbnails/vinland.jpg'
   }
 ];

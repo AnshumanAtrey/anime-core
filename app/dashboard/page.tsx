@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Play } from 'lucide-react';
 import { animeData, type AnimeSeries } from '../data/anime';
+import Image from 'next/image';
 
 // Mock continue watching data
 const continueWatching = [
@@ -54,7 +55,13 @@ export default function Dashboard() {
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
-            <div className="absolute inset-0 bg-gray-900"></div>
+            <Image
+              src="/dashboard.gif"
+              alt="Dashboard Background"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
           <div className="relative z-20 max-w-2xl px-4">
             <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome back, {user?.firstName}!</h1>
@@ -74,38 +81,6 @@ export default function Dashboard() {
           </div>
         </section>
 
-        {/* Continue Watching */}
-        {continueWatching.length > 0 && (
-          <section className="mb-16">
-            <h2 className="text-xl font-bold mb-4">Continue Watching</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {continueWatching.map((item) => (
-                <Link 
-                  key={item.id} 
-                  href={`/dashboard/watch?animeId=${item.id}&episodeId=1`}
-                  className="group relative aspect-video rounded overflow-hidden bg-gray-800 hover:scale-105 transition-transform duration-300"
-                >
-                  <div className="absolute inset-0 bg-gray-700 flex items-center justify-center">
-                    <Play className="w-12 h-12 text-white/50 group-hover:text-red-500 transition-colors" />
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-                    <div className="w-full bg-gray-600 rounded-full h-1 mb-2">
-                      <div 
-                        className="bg-red-600 h-1 rounded-full" 
-                        style={{ width: `${item.progress}%` }}
-                      ></div>
-                    </div>
-                    <div className="flex justify-between text-sm text-gray-300">
-                      <span>{item.episode}</span>
-                      <span>{item.progress}%</span>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
-
         {/* Movies */}
         <section className="mb-16">
           <h2 className="text-xl font-bold mb-4">Movies</h2>
@@ -117,7 +92,13 @@ export default function Dashboard() {
                 className="group"
               >
                 <div className="relative aspect-[2/3] rounded overflow-hidden mb-2 bg-gray-800 group-hover:scale-105 transition-transform duration-300">
-                  <div className="absolute inset-0 bg-gray-700 flex items-center justify-center">
+                  <Image
+                    src={anime.thumbnail}
+                    alt={anime.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gray-700 flex items-center justify-center opacity-0">
                     <Play className="w-12 h-12 text-white/50 group-hover:text-red-500 transition-colors" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
@@ -144,7 +125,13 @@ export default function Dashboard() {
                 className="group"
               >
                 <div className="relative aspect-[2/3] rounded overflow-hidden mb-2 bg-gray-800 group-hover:scale-105 transition-transform duration-300">
-                  <div className="absolute inset-0 bg-gray-700 flex items-center justify-center">
+                  <Image
+                    src={anime.thumbnail}
+                    alt={anime.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gray-700 flex items-center justify-center opacity-0">
                     <Play className="w-12 h-12 text-white/50 group-hover:text-red-500 transition-colors" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
