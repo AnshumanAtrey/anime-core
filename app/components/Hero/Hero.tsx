@@ -4,6 +4,12 @@ import Image from 'next/image';
 import Button from '../Button/button';
 
 const Hero = () => {
+  const router = useRouter();
+
+  const handleExploreClick = () => {
+    router.push('/dashboard');
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Image */}

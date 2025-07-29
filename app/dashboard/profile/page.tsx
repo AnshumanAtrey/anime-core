@@ -1,10 +1,22 @@
 'use client';
 
-import { useUser, UserButton } from '@clerk/nextjs';
+import { useUser, UserButton, useAuth } from '@clerk/nextjs';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function ProfilePage() {
   const { user } = useUser();
+  const { signOut } = useAuth();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.push('/');
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#141414] text-white p-8">
@@ -47,7 +59,7 @@ export default function ProfilePage() {
                   </div>
                 </div>
                 
-                <button className="mt-6 px-4 py-2 border border-gray-600 text-sm font-medium rounded hover:bg-white hover:bg-opacity-10 transition-colors">
+                <button onClick={handleSignOut} className="mt-6 px-4 py-2 border border-gray-600 text-sm font-medium rounded hover:bg-white hover:bg-opacity-10 transition-colors">
                   Sign out of all devices
                 </button>
               </div>
