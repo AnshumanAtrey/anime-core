@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts: Montserrat and Jacquard 12 */
+.montserrat-main {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.jacquard-12-regular {
+  font-family: "Jacquard 12", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Blood-red and dark theme */
+:root {
+  --blood-red: #b31217;
+  --dark-bg: #0a0608;
+  --dark-card: #1a0c10;
+  --text-main: #fff;
+}
+
+html.dark {
+  background: var(--dark-bg);
+  color: var(--text-main);
+}
+
+body {
+  @apply montserrat-main bg-[var(--dark-bg)] text-[var(--text-main)];
+}
