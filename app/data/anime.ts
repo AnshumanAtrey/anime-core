@@ -94,7 +94,7 @@ export const animeData: AnimeSeries[] = [
     year: '2016',
     genres: ['Drama', 'Romance', 'School'],
     type: 'movie',
-    thumbnail: '/thumbnails/a_silent_voice.jpg',
+    thumbnail: '/thumbnails/shoya-ishida-shouko-3840x2160-16220.jpg',
     episodes: [{
       id: '1',
       title: 'A Silent Voice',
@@ -110,7 +110,7 @@ export const animeData: AnimeSeries[] = [
     description: 'A 15-year-old boy and 27-year-old woman form an unlikely friendship in a beautiful garden.',
     year: '2013',
     genres: ['Drama', 'Romance', 'Slice of Life'],
-    thumbnail: '/thumbnails/the_garden_of_words.jpg',
+    thumbnail: '/thumbnails/mobile-the-garden-of-words-2lu2kxbh3gvapp97.jpg',
     type: 'movie',
     episodes: [{
       id: '1',
@@ -123,7 +123,7 @@ export const animeData: AnimeSeries[] = [
   },
   {
     id: '5_cm_per_sec',
-    thumbnail: '/thumbnails/5_cm_per_sec.jpg',
+    thumbnail: '/thumbnails/5_Centimeters_Per_Second.jpg',
     title: '5 Centimeters Per Second',
     description: 'A tale of two people, Tono Takaki and Shinohara Akari, who were close friends but gradually grow farther and farther apart as time moves on.',
     year: '2007',
@@ -140,7 +140,7 @@ export const animeData: AnimeSeries[] = [
   },
   {
     id: 'your-name',
-    thumbnail: '/thumbnails/your-name.jpg',
+    thumbnail: '/thumbnails/Your.jpg',
     title: 'Your Name',
     description: 'Two teenagers discover they are swapping bodies and form a deep connection.',
     year: '2016',
@@ -156,6 +156,56 @@ export const animeData: AnimeSeries[] = [
     }]
   },
   {
+    id: 'attack-on-titan',
+    title: 'Attack on Titan',
+    description: 'Humanity fights for survival against giant humanoid Titans.',
+    year: '2013',
+    genres: ['Action', 'Drama', 'Fantasy'],
+    type: 'series',
+    thumbnail: '/thumbnails/attack-on-titan-3840x2160-10339.jpg',
+    episodes: [] // Add episodes as needed
+  },
+  {
+    id: 'demon-slayer',
+    title: 'Demon Slayer',
+    description: 'A young boy becomes a demon slayer after his family is slaughtered.',
+    year: '2019',
+    genres: ['Action', 'Supernatural', 'Historical'],
+    type: 'series',
+    thumbnail: '/thumbnails/demon-slayer-3840x2160-22988.jpg',
+    episodes: []
+  },
+  {
+    id: 'jujutsu-kaisen',
+    title: 'Jujutsu Kaisen',
+    description: 'A boy becomes a jujutsu sorcerer to contain a powerful curse.',
+    year: '2020',
+    genres: ['Action', 'Supernatural', 'Horror'],
+    type: 'series',
+    thumbnail: '/thumbnails/satoru-gojo-jjk-3840x2160-19527.png',
+    episodes: []
+  },
+  {
+    id: 'spy-x-family',
+    title: 'Spy x Family',
+    description: 'A spy forms a fake family for a mission, unaware they all have secrets.',
+    year: '2022',
+    genres: ['Action', 'Comedy', 'Slice of Life'],
+    type: 'series',
+    thumbnail: '/thumbnails/spy-x-family-loid-3840x2160-11194.png',
+    episodes: []
+  },
+  {
+    id: 'chainsaw-man',
+    title: 'Chainsaw Man',
+    description: 'A poor young man gains devil powers and joins a devil hunting organization.',
+    year: '2022',
+    genres: ['Action', 'Horror', 'Supernatural'],
+    type: 'series',
+    thumbnail: '/thumbnails/denji-chainsaw-man-manga-series-3840x2160-8869.jpg',
+    episodes: []
+  },
+  {
     id: 'vinland-saga',
     title: 'Vinland Saga',
     description: 'A young Viking boy seeks vengeance for his father\'s death in this historical epic.',
@@ -163,6 +213,6 @@ export const animeData: AnimeSeries[] = [
     genres: ['Action', 'Adventure', 'Drama', 'Historical'],
     type: 'series',
     episodes: vinlandEpisodes,
-    thumbnail: '/thumbnails/vinland.jpg'
+    thumbnail: '/thumbnails/vinland-saga-3840x2160-14817.jpg'
   }
 ];
