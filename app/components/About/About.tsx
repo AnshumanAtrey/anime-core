@@ -43,15 +43,15 @@ const features = [
 
 const About = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-black relative overflow-hidden z-20">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4 relative inline-block">
-            <span className="relative z-10 px-4 bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold text-white mb-4 relative inline-block jacquard-12-regular [text-shadow:_0_0_15px_rgba(255,0,0,0.8)]">
+            <span className="relative z-10 px-4  bg-clip-text">
               ABOUT ANIME CORE
             </span>
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
@@ -75,7 +75,7 @@ const About = () => {
           <div>
             <h3 className="text-2xl font-bold text-white mb-6">Why Choose Anime Core?</h3>
             <p className="text-gray-400 mb-8">
-              At Anime Core, we're passionate about bringing you the best anime experience possible. 
+              At Anime Core, we are passionate about bringing you the best anime experience possible. 
               With a vast library of titles, multiple streaming qualities, and a user-friendly interface, 
               we make it easy to enjoy your favorite shows anytime, anywhere.
             </p>

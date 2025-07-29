@@ -2,21 +2,21 @@
 
 const Contact = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+    <section className="py-20 mb-80 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden z-20 ">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4 relative inline-block">
-            <span className="relative z-10 px-4 bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl font-bold text-white mb-4 relative inline-block jacquard-12-regular [text-shadow:_0_0_15px_rgba(255,0,0,0.8)]">
+            <span className="relative z-10 px-4 bg-clip-text">
               GET IN TOUCH
             </span>
             <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            Have questions or feedback? We'd love to hear from you!
+            Have questions or feedback? We will love to hear from you!
           </p>
         </div>
 

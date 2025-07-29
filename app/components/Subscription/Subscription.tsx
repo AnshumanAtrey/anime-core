@@ -47,18 +47,18 @@ const plans = [
 
 const Subscription = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+    <section className="py-20 bg-black relative overflow-hidden z-20">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-white mb-4 relative inline-block">
-            <span className="relative z-10 px-4 bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+        <div className="text-center mb-16 gap-4">
+          <h2 className="text-5xl font-bold text-white mb-4 [text-shadow:_0_0_15px_rgba(255,0,0,0.8)] relative inline-block jacquard-12-regular">
+            <span className="relative z-10 px-4  bg-clip-text ">
               CHOOSE YOUR PLAN
             </span>
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+            <div className="absolute bottom-0  left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
             Get unlimited access to thousands of anime series and movies with our flexible subscription plans.
@@ -102,10 +102,10 @@ const Subscription = () => {
                 ))}
               </ul>
               
-              <button className={`w-full py-3 px-6 rounded-md font-bold text-white transition-all duration-300 relative overflow-hidden group ${
+              <button className={`w-full mt-11 py-3 px-6 rounded-md font-bold text-white transition-all duration-300 relative overflow-hidden group ${
                 plan.popular 
                   ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:shadow-lg hover:shadow-pink-900/30' 
-                  : 'bg-gray-800 hover:bg-gray-700 border border-gray-700 hover:border-red-500/50'
+                  : 'bg-gray-800 mt-4 hover:bg-gray-700 border border-gray-700 hover:border-red-500/50'
               }`}>
                 <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative z-10">
