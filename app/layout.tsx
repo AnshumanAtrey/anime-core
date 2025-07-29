@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import "./globals.css";
+import UserSetupWrapper from "@/components/UserSetupWrapper";
 
 export const metadata: Metadata = {
   title: "Anime Core | Your Ultimate Anime Streaming Experience",
@@ -48,8 +49,10 @@ export default function RootLayout({
             rel="stylesheet"
           />
         </head>
-        <body className="bg-[#141414] text-white min-h-screen">
-          {children}
+        <body className="min-h-screen bg-[#141414] text-white">
+          <UserSetupWrapper>
+            {children}
+          </UserSetupWrapper>
         </body>
       </html>
     </ClerkProvider>

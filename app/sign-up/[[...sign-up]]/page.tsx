@@ -1,6 +1,11 @@
+'use client';
+
 import { SignUp } from "@clerk/nextjs";
+import { useUserSetup } from "@/app/utils/auth-utils";
 
 export default function SignUpPage() {
+  // This will ensure the user is created in Firestore when they sign up
+  useUserSetup();
   return (
     <div className="min-h-screen bg-[#141414] flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-black bg-opacity-80 p-8 rounded-lg">

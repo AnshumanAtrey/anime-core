@@ -1,6 +1,24 @@
-import { SignIn } from "@clerk/nextjs";
+'use client';
+
+import { SignIn, useAuth } from "@clerk/nextjs";
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { useUserSetup } from "../../utils/auth-utils";
 
 export default function SignInPage() {
+  const { isLoaded, userId } = useAuth();
+  const router = useRouter();
+
+  // This will ensure the user is created in Firestore when they sign in
+  useUserSetup();
+
+  // Redirect if already signed in
+  useEffect(() => {
+    if (isLoaded && userId) {
+      router.push('/dashboard');
+    }
+  }, [isLoaded, userId, router]);
+
   return (
     <div className="min-h-screen bg-[#141414] flex items-center justify-center p-4">
       <div className="w-full max-w-md bg-black bg-opacity-80 p-8 rounded-lg">
@@ -8,6 +26,8 @@ export default function SignInPage() {
           Sign In
         </h1>
         <SignIn 
+          afterSignInUrl="/dashboard"
+          afterSignUpUrl="/dashboard"
           appearance={{
             elements: {
               rootBox: 'w-full',
