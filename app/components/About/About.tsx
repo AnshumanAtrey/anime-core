@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import SpotlightCard from '../SpotlightCard/SpotlightCard';
 
 const features = [
   {
@@ -50,7 +51,7 @@ const About = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-4 relative inline-block jacquard-12-regular [text-shadow:_0_0_15px_rgba(255,0,0,0.8)]">
+          <h2 className="text-7xl font-bold text-white mb-4 relative inline-block jacquard-12-regular [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)]">
             <span className="relative z-10 px-4  bg-clip-text">
               ABOUT ANIME CORE
             </span>
@@ -60,18 +61,18 @@ const About = () => {
             Your ultimate destination for streaming the best anime content from Japan and around the world.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-          <div className="relative rounded-xl overflow-hidden border border-gray-800 hover:border-red-500/50 transition-all duration-300">
-            <div className="aspect-video bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
-              <div className="text-center p-8">
-                <div className="text-6xl mb-4">🎌</div>
-                <h3 className="text-2xl font-bold text-white mb-4">The Best of Japanese Animation</h3>
-                <p className="text-gray-400">Curated selection of top-rated anime series and movies</p>
+        
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+            
+            <div className="relative rounded-xl overflow-hidden border border-gray-800 hover:border-red-500/50 transition-all duration-300">
+              <div className="aspect-video bg-gradient-to-br from-gray-900 to-black flex items-center justify-center">
+                <div className="text-center p-8">
+                  <div className="text-6xl mb-4">🎌</div>
+                  <h3 className="text-2xl font-bold text-white mb-4">The Best of Japanese Animation</h3>
+                  <p className="text-gray-400">Curated selection of top-rated anime series and movies</p>
+                </div>
               </div>
             </div>
-          </div>
-          
           <div>
             <h3 className="text-2xl font-bold text-white mb-6">Why Choose Anime Core?</h3>
             <p className="text-gray-400 mb-8">
@@ -82,13 +83,13 @@ const About = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((feature, index) => (
-                <div key={index} className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300">
+                <SpotlightCard key={index} className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-lg border border-gray-800 hover:border-red-500/50 transition-all duration-300">
                   <div className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-lg mb-4">
                     {feature.icon}
                   </div>
                   <h4 className="text-lg font-bold text-white mb-2">{feature.title}</h4>
                   <p className="text-gray-400 text-sm">{feature.description}</p>
-                </div>
+                </SpotlightCard>
               ))}
             </div>
           </div>

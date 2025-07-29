@@ -54,7 +54,7 @@ const Subscription = () => {
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16 gap-4">
-          <h2 className="text-5xl font-bold text-white mb-4 [text-shadow:_0_0_15px_rgba(255,0,0,0.8)] relative inline-block jacquard-12-regular">
+          <h2 className="text-7xl font-bold text-white mb-4 [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)] relative inline-block jacquard-12-regular">
             <span className="relative z-10 px-4  bg-clip-text ">
               CHOOSE YOUR PLAN
             </span>
@@ -76,7 +76,7 @@ const Subscription = () => {
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-bold px-4 py-1 rounded-full">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-500 to-red-600 text-white text-shadow-md text-xs font-bold px-4 py-1 rounded-full">
                   MOST POPULAR
                 </div>
               )}
@@ -84,7 +84,7 @@ const Subscription = () => {
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
                 <div className="flex items-center justify-center space-x-1">
-                  <span className="text-4xl font-extrabold bg-gradient-to-r from-red-500 to-pink-500 bg-clip-text text-transparent">
+                  <span className="text-4xl font-extrabold bg-gradient-to-r from-red-500 to-gray-800  bg-clip-text text-transparent">
                     ${plan.price}
                   </span>
                   <span className="text-gray-400">/{plan.period}</span>
@@ -102,11 +102,11 @@ const Subscription = () => {
                 ))}
               </ul>
               
-              <button className={`w-full mt-11 py-3 px-6 rounded-md font-bold text-white transition-all duration-300 relative overflow-hidden group ${
+              <button className={`w-full mt-11 py-3 px-6 rounded-md font-bold text-white transition-all duration-300 relative overflow-hidden group justify-center ${
                 plan.popular 
-                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:shadow-lg hover:shadow-pink-900/30' 
+                  ? 'bg-gradient-to-r from-red-500 to-red-600 hover:shadow-lg hover:shadow-pink-900/30' 
                   : 'bg-gray-800 mt-4 hover:bg-gray-700 border border-gray-700 hover:border-red-500/50'
-              }`}>
+              }`}>  
                 <span className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 <span className="relative z-10">
                   {plan.popular ? 'GET STARTED' : 'CHOOSE PLAN'}

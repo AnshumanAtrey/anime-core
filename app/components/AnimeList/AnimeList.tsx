@@ -42,9 +42,9 @@ const animeList = [
 
 const AnimeList = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden z-20">
+    <section className="py-20 bg-black relative overflow-hidden z-20">
       <div className="container mx-auto px-4">
-        <h2 className="text-5xl font-bold text-white mb-12 text-center relative [text-shadow:_0_0_15px_rgba(255,0,0,0.8)]">
+        <h2 className="text-7xl font-bold text-white mb-12 text-center relative [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)]">
           <span className="relative z-10 px-4 bg-clip-text jacquard-12-regular">
             TRENDING NOW
           </span>

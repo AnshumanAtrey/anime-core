@@ -34,11 +34,11 @@ export default function Dashboard() {
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-gradient-to-b from-black to-transparent p-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4">
-          <Link href="/" className="text-red-600 font-bold text-2xl font-jacquard">
+          <Link href="/" className="text-white font-bold text-6xl jacquard-12-regular [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)]">
             ANIME CORE
           </Link>
           <div className="flex items-center space-x-6">
-            <Link href="/dashboard" className="hover:text-gray-300 transition-colors">Home</Link>
+            <Link href="/dashboard" className="hover:text-gray-300 text-2xl transition-colors ">Home</Link>
             <Link 
               href="/dashboard/profile" 
               className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors"

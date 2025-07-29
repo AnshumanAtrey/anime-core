@@ -9,6 +9,7 @@ interface AnimeCardProps {
     image: string;
     episodes: number;
     rating: number;
+    thumbnail: string;
   };
 }
 

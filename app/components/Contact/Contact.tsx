@@ -1,15 +1,18 @@
 'use client';
 
+import SpotlightCard from "../SpotlightCard/SpotlightCard";
+import Button from "../Button/button";
+
 const Contact = () => {
   return (
-    <section className="py-20 mb-80 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden z-20 ">
+    <section className="py-20 mb-80 bg-black relative overflow-hidden z-20 ">
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]"></div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-white mb-4 relative inline-block jacquard-12-regular [text-shadow:_0_0_15px_rgba(255,0,0,0.8)]">
+          <h2 className="text-7xl font-bold text-white mb-4 relative inline-block jacquard-12-regular [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)]">
             <span className="relative z-10 px-4 bg-clip-text">
               GET IN TOUCH
             </span>
@@ -22,7 +25,7 @@ const Contact = () => {
 
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
+            <SpotlightCard className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -35,9 +38,9 @@ const Contact = () => {
                   <p className="text-gray-400">business@animecore.com</p>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
+            <SpotlightCard className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,9 +53,9 @@ const Contact = () => {
                   <p className="text-gray-400">Mon - Fri, 9am - 6pm EST</p>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
+            <SpotlightCard className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
               <div className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-red-500/10 rounded-lg flex items-center justify-center">
                   <svg className="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -66,7 +69,7 @@ const Contact = () => {
                   <p className="text-gray-400">Tokyo, Japan 100-0001</p>
                 </div>
               </div>
-            </div>
+            </SpotlightCard>
           </div>
 
           <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800 hover:border-red-500/50 transition-all duration-300">
@@ -108,12 +111,9 @@ const Contact = () => {
                   placeholder="Type your message here..."
                 ></textarea>
               </div>
-              <button
-                type="submit"
-                className="w-full py-3 px-6 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-bold rounded-lg transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-900/30"
-              >
-                SEND MESSAGE
-              </button>
+              <div className="flex justify-center">
+                <Button>SEND MESSAGE</Button>
+              </div>
             </form>
           </div>
         </div>
