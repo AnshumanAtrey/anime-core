@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Play } from 'lucide-react';
 import { animeData, type AnimeSeries } from '../data/anime';
 import Image from 'next/image';
-import Footer from '../components/Footer/Footer'; // Import the Footer component
+import { useUserPhoto } from '@/hooks/useUserPhoto';
 
 // Mock continue watching data
 const continueWatching = [
@@ -17,7 +17,7 @@ const continueWatching = [
 export default function Dashboard() {
   const { user, isLoaded } = useUser();
   const [isClient, setIsClient] = useState(false);
-  const [currentAnimeIndex, setCurrentAnimeIndex] = useState(0);
+  const { photoUrl } = useUserPhoto();
 
   useEffect(() => {
     setIsClient(true);
@@ -67,9 +67,25 @@ export default function Dashboard() {
             <Link href="/dashboard" className="hover:text-gray-300 text-2xl transition-colors ">Home</Link>
             <Link 
               href="/dashboard/profile" 
-              className="w-8 h-8 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-colors"
+              className="w-10 h-10 rounded-full overflow-hidden border-2 border-red-600 hover:border-red-400 transition-colors"
             >
-              {user?.firstName?.[0]}
+              {photoUrl ? (
+                <img 
+                  src={photoUrl} 
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    // Fallback to initial if image fails to load
+                    const target = e.target as HTMLImageElement;
+                    target.onerror = null;
+                    target.src = '';
+                  }}
+                />
+              ) : (
+                <div className="w-full h-full bg-red-600 flex items-center justify-center text-white font-medium">
+                  {user?.firstName?.[0]}
+                </div>
+              )}
             </Link>
           </div>
         </div>

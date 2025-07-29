@@ -6,7 +6,7 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'img.clerk.com', 'images.clerk.dev'],
   },
   // Add any other Next.js config options here
 };
