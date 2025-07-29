@@ -3,6 +3,7 @@
 import { useUser, UserButton, useAuth } from '@clerk/nextjs';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function ProfilePage() {
   const { user } = useUser();
@@ -19,59 +20,90 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#141414] text-white p-8">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <Link href="/" className="text-red-600 font-bold text-2xl">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black p-8">
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/70 z-10" />
+
+      {/* Content */}
+      <div className="relaive z-20 w-full max-w-4xl">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-12">
+          <Link href="/" className="jacquard-12-regular text-5xl md:text-5xl text-white/90 [text-shadow:_0_0_15px_rgba(255,0,0,0.8)] hover:scale-105 transition-transform">
             ANIME CORE
           </Link>
-          <UserButton afterSignOutUrl="/" />
+          <div className="bg-black/50 p-2 rounded-full border border-white/10">
+            <UserButton afterSignOutUrl="/" />
+          </div>
         </div>
 
-        <div className="bg-black bg-opacity-70 p-8 rounded-lg">
-          <h1 className="text-3xl font-bold mb-8">Account</h1>
+        {/* Profile Card */}
+        <div className="bg-black/80 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-2xl">
+          <h1 className="text-4xl font-bold mb-8 text-white [text-shadow:_0_0_10px_rgba(255,0,0,0.5)]">
+            Account
+          </h1>
           
-          <div className="flex items-start space-x-6">
-            <div className="w-20 h-20 rounded-full bg-red-600 flex items-center justify-center text-2xl font-bold">
+          <div className="flex flex-col md:flex-row items-start space-y-8 md:space-y-0 md:space-x-8">
+            {/* Profile Avatar */}
+            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center text-4xl font-bold text-white shadow-lg">
               {user?.firstName?.[0]}
             </div>
             
-            <div className="flex-1">
-              <h2 className="text-2xl font-semibold">
-                {user?.fullName}
-              </h2>
-              <p className="text-gray-400 mb-4">{user?.primaryEmailAddress?.emailAddress}</p>
+            {/* Profile Details */}
+            <div className="flex-1 w-full">
+              <div className="mb-6">
+                <h2 className="text-3xl font-bold text-white mb-1">
+                  {user?.fullName}
+                </h2>
+                <p className="text-gray-300">{user?.primaryEmailAddress?.emailAddress}</p>
+              </div>
               
-              <div className="mt-6 space-y-4">
-                <h3 className="text-lg font-medium">Membership & Billing</h3>
-                <div className="bg-[#2A2A2A] p-4 rounded">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-400">Email:</span>
-                    <span>{user?.primaryEmailAddress?.emailAddress}</span>
+              {/* Membership Card */}
+              <div className="bg-gradient-to-r from-gray-900/90 to-gray-800/90 p-6 rounded-lg border border-white/5 mb-8">
+                <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+                  <span className="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
+                  Membership & Billing
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center border-b border-white/5 pb-3">
+                    <span className="text-gray-400">Email</span>
+                    <span className="font-medium">{user?.primaryEmailAddress?.emailAddress}</span>
                   </div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-gray-400">Password:</span>
-                    <span>•••••••••</span>
+                  <div className="flex justify-between items-center border-b border-white/5 pb-3">
+                    <span className="text-gray-400">Password</span>
+                    <span className="text-gray-300">•••••••••</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Plan:</span>
-                    <span className="text-red-500">Premium</span>
+                    <span className="text-gray-400">Plan</span>
+                    <span className="px-3 py-1 bg-gradient-to-r from-red-600 to-red-800 rounded-full text-sm font-medium">
+                      Premium
+                    </span>
                   </div>
                 </div>
                 
-                <button onClick={handleSignOut} className="mt-6 px-4 py-2 border border-gray-600 text-sm font-medium rounded hover:bg-white hover:bg-opacity-10 transition-colors">
-                  Sign out of all devices
+                <button 
+                  onClick={handleSignOut}
+                  className="mt-8 w-full md:w-auto px-6 py-2.5 border border-white/20 bg-gradient-to-r from-red-600/90 to-red-700/90 text-white font-medium rounded-md hover:from-red-500 hover:to-red-600 transition-all duration-300 flex items-center justify-center space-x-2 group"
+                >
+                  <span>Sign out of all devices</span>
+                  <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
               </div>
               
-              <div className="mt-8 pt-6 border-t border-gray-800">
-                <h3 className="text-lg font-medium mb-4">Settings</h3>
-                <div className="space-y-4">
-                  <Link href="/dashboard" className="block text-blue-400 hover:underline">
-                    Back to Home
+              {/* Settings Section */}
+              <div className="border-t border-white/10 pt-6">
+                <h3 className="text-xl font-semibold text-white mb-4">Settings</h3>
+                <div className="space-y-3">
+                  <Link 
+                    href="/dashboard" 
+                    className="flex items-center space-x-2 text-blue-400 hover:text-blue-300 transition-colors group"
+                  >
+                    <span>←</span>
+                    <span>Back to Home</span>
                   </Link>
-                  <button className="text-red-500 hover:underline">
-                    Cancel Membership
+                  <button className="text-red-400 hover:text-red-300 transition-colors flex items-center space-x-2 group">
+                    <span className="group-hover:scale-110 transition-transform">✕</span>
+                    <span>Cancel Membership</span>
                   </button>
                 </div>
               </div>
@@ -79,6 +111,6 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

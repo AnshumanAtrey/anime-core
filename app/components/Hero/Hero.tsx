@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Button from '../Button/button';
+import { useRouter } from 'next/navigation';
 
 const Hero = () => {
   const router = useRouter();
@@ -51,7 +52,7 @@ const Hero = () => {
             <p className="text-xl md:text-2xl text-white mb-10 max-w-lg mx-auto [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)]">
               Your Ultimate Anime Streaming Experience
             </p>
-            <Button>EXPLORE NOW</Button>
+            <Button onClick={handleExploreClick}>EXPLORE NOW</Button>
           </div>
 
           {/* Right Side Content */}

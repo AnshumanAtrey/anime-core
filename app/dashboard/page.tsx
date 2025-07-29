@@ -30,9 +30,9 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-[#141414] text-white">
+    <div className="min-h-screen bg-[#000000] text-white">
       {/* Navbar */}
-      <nav className="fixed top-0 w-full z-50 bg-gradient-to-b from-black to-transparent p-4">
+      <nav className="fixed top-0 w-full z-50 border-b-2 border-gray-800 bg-[#00000056]  p-4">
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4">
           <Link href="/" className="text-white font-bold text-6xl jacquard-12-regular [text-shadow:_10px_10px_25px_rgba(255,0,0,0.8)]">
             ANIME CORE
@@ -49,9 +49,9 @@ export default function Dashboard() {
         </div>
       </nav>
 
-      <main className="pt-20 px-4 md:px-12 max-w-7xl mx-auto">
+      <main className="pt-20 px-4 md:px-4 max-w-full mx-auto">
         {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center mb-16">
+        <section className=" h-[70vh] w-full flex items-center mb-40 ">
           <div className="absolute inset-0 z-0">
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10"></div>
@@ -63,8 +63,8 @@ export default function Dashboard() {
               priority
             />
           </div>
-          <div className="relative z-20 max-w-2xl px-4">
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome back, {user?.firstName}!</h1>
+          <div className="relative z-20 max-w-2xl px-4 pt-24 [text-shadow:_10px_10px_25px_rgba(25,0,0,0.8)]">
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-red-500 to-red-900 text-transparent bg-clip-text">Welcome back, {user?.firstName}!</h1>
             <p className="text-lg md:text-xl mb-6 text-gray-300">Your anime journey continues here.</p>
             <div className="flex space-x-4">
               <Link 
@@ -82,8 +82,8 @@ export default function Dashboard() {
         </section>
 
         {/* Movies */}
-        <section className="mb-16">
-          <h2 className="text-xl font-bold mb-4">Movies</h2>
+        <section className="mb-16 w-full ">
+          <h2 className="text-2xl font-bold mb-4 text-white">Movies</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {animeData.filter(anime => anime.type === 'movie').map((anime: AnimeSeries) => (
               <Link 
@@ -146,6 +146,40 @@ export default function Dashboard() {
             ))}
           </div>
         </section>
+
+        {/* New Ranked Section */}
+        <section className="mt-16 mb-16px bg-gradient-to-t from-red-950 to-black">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 border-r ">
+            {['Top Airing', 'Most Popular', 'Most Favorite', 'Latest Completed'].map((category) => (
+              <div key={category} >
+                <h3 className="text-xl font-bold mb-4 text-red-800">{category}</h3>
+                <div className="space-y-4">
+                  {animeData
+                    .slice()
+                    .sort(() => Math.random() - 0.5)
+                    .slice(0, 5)
+                    .map((anime) => (
+                      <Link key={anime.id} href={`/dashboard/watch?animeId=${anime.id}&episodeId=1`} className="group flex items-center space-x-4">
+                        <div className="relative w-20 h-28 rounded overflow-hidden flex-shrink-0 [box-shadow:0_0_10px_rgba(0,0,0)]">
+                          <Image
+                            src={anime.thumbnail}
+                            alt={anime.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="font-bold group-hover:text-red-500 transition-colors">{anime.title}</h4>
+                          <p className="text-sm text-gray-400">{anime.type === 'movie' ? 'Movie' : `${anime.episodes.length} Episodes`}</p>
+                        </div>
+                      </Link>
+                    ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
       </main>
     </div>
   );
