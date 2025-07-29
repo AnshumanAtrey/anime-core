@@ -1,8 +1,15 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Hero = () => {
+  const router = useRouter();
+
+  const handleExploreClick = () => {
+    router.push('/dashboard');
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Background Image */}
@@ -44,7 +51,10 @@ const Hero = () => {
             <p className="text-xl md:text-2xl text-white mb-8 max-w-lg mx-auto [text-shadow:_0_0_10px_rgba(0,0,0,0.8)]">
               Your Ultimate Anime Streaming Experience
             </p>
-            <button className="relative px-8 py-3 font-bold text-white border-2 border-white/20 bg-transparent hover:bg-white/10 transition-all duration-300 group overflow-hidden">
+                        <button
+              onClick={handleExploreClick}
+              className="relative px-8 py-3 font-bold text-white border-2 border-white/20 bg-transparent hover:bg-white/10 transition-all duration-300 group overflow-hidden"
+            >
               <span className="absolute inset-0 border-l-2 border-r-2 border-red-500 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"></span>
               <span className="relative z-10">EXPLORE NOW</span>
             </button>

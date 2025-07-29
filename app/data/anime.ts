@@ -86,6 +86,7 @@ export interface AnimeSeries {
 }
 
 export const animeData: AnimeSeries[] = [
+  
   {
     id: 'a-silent-voice',
     title: 'A Silent Voice',
@@ -121,18 +122,18 @@ export const animeData: AnimeSeries[] = [
     }]
   },
   {
-    id: 'weathering-with-you',
-    thumbnail: '/thumbnails/weathering-with-you.jpg',
-    title: 'Weathering with You',
-    description: 'A high-school boy who has run away to Tokyo befriends a girl who appears to be able to manipulate the weather.',
-    year: '2019',
-    genres: ['Animation', 'Drama', 'Fantasy'],
+    id: '5_cm_per_sec',
+    thumbnail: '/thumbnails/5_cm_per_sec.jpg',
+    title: '5 Centimeters Per Second',
+    description: 'A tale of two people, Tono Takaki and Shinohara Akari, who were close friends but gradually grow farther and farther apart as time moves on.',
+    year: '2007',
+    genres: ['Drama', 'Romance', 'Slice of Life'],
     type: 'movie',
     episodes: [{
       id: '1',
-      title: 'Weathering with You',
-      fileId: '1-placeholder-file-id-for-weathering-with-you',
-      duration: '1h 52m',
+      title: '5 Centimeters Per Second',
+      fileId: '1-placeholder-file-id-for-5_cm_per_sec',
+      duration: '1h 3m',
       embedUrl: embedUrl('1vaJq7NFZyww74Tq-lECZRLjC3YU4owva'),
       progress: 0
     }]
