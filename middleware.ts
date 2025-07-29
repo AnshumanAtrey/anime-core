@@ -1,64 +1,58 @@
-import { auth, redirectToSignIn } from '@clerk/nextjs';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+
+// Define which routes should be protected
+const isProtectedRoute = createRouteMatcher([
+  '/dashboard(.*)', // Protect all dashboard routes
+]);
 
 // Define public routes that don't require authentication
-const publicRoutes = [
+const isPublicRoute = createRouteMatcher([
   '/',
   '/sign-in(.*)',
   '/sign-up(.*)',
-  '/api(.*)',  
+  '/api/webhook(.*)',
   '/_next(.*)',
   '/(assets|images|favicon.ico)',
-];
+]);
 
-// Define protected routes that require authentication
-const protectedRoutes = [
-  '/dashboard(.*)',
-];
-
-export default async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Check if the current route is public
-  const isPublicRoute = publicRoutes.some(route => 
-    new RegExp(`^${route.replace(/\*/g, '.*')}$`).test(pathname)
-  );
-
-  // Check if the current route is protected
-  const isProtectedRoute = protectedRoutes.some(route => 
-    new RegExp(`^${route.replace(/\*/g, '.*')}$`).test(pathname)
-  );
-
-  // Get the session
-  const { userId } = auth();
-
-  // Allow public routes
-  if (isPublicRoute) {
-    // If user is signed in and tries to access sign-in/sign-up, redirect to dashboard
+export default clerkMiddleware(async (auth, req) => {
+  const { pathname } = req.nextUrl;
+  
+  // Skip middleware for public routes
+  if (isPublicRoute(req)) {
+    // If user is signed in and tries to access sign-in/up, redirect to dashboard
+    const { userId } = await auth();
     if (userId && (pathname.startsWith('/sign-in') || pathname.startsWith('/sign-up'))) {
-      return NextResponse.redirect(new URL('/dashboard', request.url));
+      return NextResponse.redirect(new URL('/dashboard', req.url));
     }
     return NextResponse.next();
   }
-
-  // Handle protected routes
-  if (isProtectedRoute) {
-    // If user is not signed in, redirect to sign-in
+  
+  // Protect routes that match the protected pattern
+  if (isProtectedRoute(req)) {
+    // Check if user is authenticated
+    const { userId } = await auth();
+    
     if (!userId) {
-      const signInUrl = new URL('/sign-in', request.url);
+      // User is not authenticated, redirect to sign-in
+      const signInUrl = new URL('/sign-in', req.url);
       signInUrl.searchParams.set('redirect_url', pathname);
       return NextResponse.redirect(signInUrl);
     }
   }
 
-  // If the route is not public or protected, allow access
+  // Allow the request to continue
   return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: [
-    '/((?!.+\\.[\\w]+$|_next).*)',
+    // Match all request paths except for the ones starting with:
+    // - _next/static (static files)
+    // - _next/image (image optimization files)
+    // - favicon.ico (favicon file)
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|css|js)$).*)',
     '/',
     '/(api|trpc)(.*)',
   ],
