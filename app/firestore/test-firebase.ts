@@ -1,5 +1,5 @@
 // test-firebase.ts
-const { testFirebaseConnection } = require('./userService');
+import { testFirebaseConnection } from './userService';
 
 async function main() {
   try {

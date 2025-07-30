@@ -1,15 +1,14 @@
-import { notFound } from 'next/navigation';
 import { animeData } from '@/app/data/anime';
 import Link from 'next/link';
 import { Play } from 'lucide-react';
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
-export default function AnimeSeriesPage({ params }: { params: { id: string } }) {
-  const anime = animeData.find(a => a.id === params.id);
-  
-  if (!anime || anime.type !== 'series') {
-    notFound();
-  }
+type AnimePageProps = { params: Promise<{ id: string }> };
+export default async function AnimePage({ params }: AnimePageProps) {
+  const { id } = await params;
+  const anime = animeData.find((a) => a.id === id);
+  if (!anime) return notFound();
 
   return (
     <div className="min-h-screen bg-[#141414] text-white pt-20 px-4 md:px-12">
@@ -63,7 +62,7 @@ export default function AnimeSeriesPage({ params }: { params: { id: string } }) 
         <h2 className="text-2xl font-bold mb-6">Episodes</h2>
         <div className="space-y-4">
           {anime.episodes.map((episode) => (
-            <Link 
+            <Link
               key={episode.id}
               href={`/dashboard/watch?animeId=${anime.id}&episodeId=${episode.id}`}
               className="block bg-gray-900/50 hover:bg-gray-800/50 rounded-lg p-4 transition-colors group"

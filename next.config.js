@@ -3,7 +3,7 @@ const { withNextVideo } = require('next-video/process');
 
 const nextConfig = {
   experimental: {
-    serverActions: true,
+    serverActions: {},
   },
   images: {
     domains: ['localhost', 'img.clerk.com', 'images.clerk.dev'],

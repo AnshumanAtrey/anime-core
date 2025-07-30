@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import SpotlightCard from '../SpotlightCard/SpotlightCard';
 
 const features = [
