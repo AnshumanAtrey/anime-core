@@ -24,8 +24,6 @@ export function useUserPhoto() {
           const data = await response.json();
           if (data.photo) {
             setPhotoUrl(data.photo);
-          } else if (user.imageUrl) {
-            setPhotoUrl(user.imageUrl);
           }
         }
       } catch (error) {

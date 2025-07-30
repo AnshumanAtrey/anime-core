@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
@@ -34,16 +33,25 @@ export async function GET() {
     }
 
     const models = await response.json();
-    const availableModels = models.data.map((m: any) => ({
-      id: m.id,
-      name: m.name,
-      type: m.type,
-      description: m.description
-    }));
+    type Model = {
+      id: string;
+      name?: string;
+      type: string;
+      created: number;
+    };
+
+    const availableModels = models.data
+      .map((model: Model) => ({
+        id: model.id,
+        name: model.name || model.id.split('/')[1],
+        type: model.type,
+        created: new Date(model.created * 1000).toLocaleString(),
+      }))
+      .filter((model: Model) => model.type === 'image');
 
     // Check if our target model is available
     const targetModel = 'black-forest-labs/FLUX.1-schnell-Free';
-    const modelAvailable = availableModels.some((m: any) => m.id === targetModel);
+    const modelAvailable = availableModels.some((m: Model) => m.id === targetModel);
 
     return NextResponse.json({
       success: true,

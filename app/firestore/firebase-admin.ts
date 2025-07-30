@@ -2,18 +2,11 @@
 // firebase-adminDb.ts
 import { initializeApp, getApps, cert, App } from 'firebase-admin/app';
 import { getFirestore, Firestore } from 'firebase-admin/firestore';
-import { readFile } from 'fs/promises';
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
 let app: App | null = null;
 let adminDb: Firestore | null = null;
 let isInitialized = false;
 let initializationError: Error | null = null;
-
-// Get the directory name in ES module
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
 
 async function initializeFirebase() {
   if (isInitialized) return { app: app!, adminDb: adminDb! };
@@ -22,20 +15,22 @@ async function initializeFirebase() {
   try {
     console.log('🔧 Initializing Firebase Admin...');
     
-    // Read the service account file
-    const serviceAccountPath = join(__dirname, 'serviceAccountKey.json');
-    console.log('📁 Service account path:', serviceAccountPath);
-    
-    const serviceAccount = JSON.parse(await readFile(serviceAccountPath, 'utf-8'));
-    console.log('✅ Successfully loaded service account for project:', serviceAccount.project_id);
-    
-    if (!serviceAccount.project_id || !serviceAccount.client_email || !serviceAccount.private_key) {
-      throw new Error('Service account is missing required fields');
+    // Construct service account from environment variables
+    const serviceAccount = {
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    };
+
+    if (!serviceAccount.projectId || !serviceAccount.clientEmail || !serviceAccount.privateKey) {
+      throw new Error('Firebase environment variables (PROJECT_ID, CLIENT_EMAIL, PRIVATE_KEY) are not set.');
     }
+
+    console.log('✅ Loaded Firebase credentials for project:', serviceAccount.projectId);
 
     const firebaseAdminConfig = {
       credential: cert(serviceAccount),
-      databaseURL: `https://${serviceAccount.project_id}.firebaseio.com`
+      databaseURL: `https://${serviceAccount.projectId}.firebaseio.com`
     };
 
     // Initialize Firebase Admin (avoid multiple initializations)
